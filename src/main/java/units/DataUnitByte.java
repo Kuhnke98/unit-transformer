@@ -11,14 +11,14 @@ import lombok.Getter;
 public enum DataUnitByte implements Unitizer {
 
     BIT("bit", 8d),
-    BYTE("byte", 2e10),
-    KIBIBYTE("kB", 2e20),
-    MEBIBYTE("MB", 2e30),
-    GIBIBYTE("GB", 2e40),
-    TEBIBYTE("TB", 2e50),
-    PEBIBYTE("OB", 2e60),
-    EXBIBYTE("EB", 2e70),
-    ZEBIBYTE("ZB", 2e80),
+    BYTE("byte", 1024d),
+    KIBIBYTE("kB", 1024d),
+    MEBIBYTE("MB", 1024d),
+    GIBIBYTE("GB", 1024d),
+    TEBIBYTE("TB", 1024d),
+    PEBIBYTE("PB", 1024d),
+    EXBIBYTE("EB", 1024d),
+    ZEBIBYTE("ZB", 1024d),
     YOBIBYTE("YB", null);
 
     private String unit;

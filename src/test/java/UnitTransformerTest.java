@@ -9,9 +9,9 @@ class UnitTransformerTest {
     private static final double TRANSFORM_VALUE = 100;
 
     @Test
-    void transformDataUnitByteToDataUnitBitPass() {
-        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, DataUnitByte.TEBIBYTE, DataUnitBit.TERABYTE);
-        Assertions.assertEquals(1.2800000000000002E92, resultValue);
+    void transformSameUnitPass() {
+        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, DataUnitByte.TEBIBYTE, DataUnitByte.TEBIBYTE);
+        Assertions.assertEquals(TRANSFORM_VALUE, resultValue);
     }
 
     @Test
