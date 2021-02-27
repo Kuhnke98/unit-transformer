@@ -41,19 +41,19 @@ public class UnitTransformer {
 
     private static double transformHigherUnit(double value, Enum<?> unit, Enum<?> targetUnit) {
         Enum<?>[] targetEnum = unit.getDeclaringClass().getEnumConstants();
-        do {
+        while (targetUnit.ordinal() > unit.ordinal()) {
             value = value / ((Unitizer) unit).getMultiplier();
             unit = targetEnum[unit.ordinal() + 1];
-        } while (targetUnit.ordinal() > unit.ordinal());
+        }
         return value;
     }
 
     private static double transformLowerUnit(double value, Enum<?> unit, Enum<?> targetUnit) {
         Enum<?>[] targetEnum = unit.getDeclaringClass().getEnumConstants();
-        do {
+        while (targetUnit.ordinal() < unit.ordinal()) {
             unit = targetEnum[unit.ordinal() - 1];
             value = value * ((Unitizer) unit).getMultiplier();
-        } while (targetUnit.ordinal() < unit.ordinal());
+        }
         return value;
     }
 
