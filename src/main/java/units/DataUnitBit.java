@@ -20,6 +20,6 @@ public enum DataUnitBit implements Unitizer {
     ZETTABYTE("ZB", 1e3),
     YOTTABYTE("YB", null);
 
-    private String unit;
-    private Double multiplier;
+    private final String unit;
+    private final Double multiplier;
 }

@@ -21,6 +21,6 @@ public enum DataUnitByte implements Unitizer {
     ZEBIBYTE("ZB", 1024d),
     YOBIBYTE("YB", null);
 
-    private String unit;
-    private Double multiplier;
+    private final String unit;
+    private final Double multiplier;
 }

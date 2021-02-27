@@ -23,6 +23,6 @@ public enum LengthUnit implements Unitizer {
     KILOMETER("km", 1.609344d),
     MILE("", null);
 
-    private String unit;
-    private Double multiplier;
+    private final String unit;
+    private final Double multiplier;
 }

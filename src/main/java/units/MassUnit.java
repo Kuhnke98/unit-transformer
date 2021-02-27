@@ -15,6 +15,6 @@ public enum MassUnit implements Unitizer {
     GRAM("g", 1000d),
     KILOGRAM("kg", 1000d);
 
-    private String unit;
-    private Double multiplier;
+    private final String unit;
+    private final Double multiplier;
 }
