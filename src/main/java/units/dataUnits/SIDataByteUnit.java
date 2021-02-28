@@ -1,7 +1,8 @@
-package units;
+package units.dataUnits;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import units.Unitizer;
 
 /**
  * @author kuhnke98

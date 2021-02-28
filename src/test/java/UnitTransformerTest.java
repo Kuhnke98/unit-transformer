@@ -1,7 +1,17 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import units.*;
 
+import static units.dataUnits.DataBinaryUnit.YOBIBIT;
+import static units.dataUnits.DataByteUnit.TEBIBYTE;
+import static units.dataUnits.DataByteUnit.YOBIBYTE;
+import static units.dataUnits.SIDataBinaryUnit.YOTTABIT;
+import static units.dataUnits.SIDataByteUnit.YOTTABYTE;
+import static units.lengthUnits.InternationalLengthUnit.MILE;
+import static units.lengthUnits.LengthUnit.*;
+import static units.lengthUnits.UsSurveyLengthUnit.LEAGUE;
+import static units.massUnits.BrittishMassUnit.UNZE;
+import static units.massUnits.BrittishMassUnit.ZENTNER;
+import static units.massUnits.MassUnit.*;
 
 /**
  * @author kuhnke98
@@ -19,13 +29,13 @@ class UnitTransformerTest {
 
     @Test
     void transformSameUnitPass() {
-        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, DataByteUnit.TEBIBYTE, DataByteUnit.TEBIBYTE);
+        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, TEBIBYTE, TEBIBYTE);
         Assertions.assertEquals(TRANSFORM_VALUE, resultValue);
     }
 
     @Test
     void transformDifferentUnitTypesFail() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> UnitTransformer.transform(TRANSFORM_VALUE, DataByteUnit.TEBIBYTE, LengthUnit.KILOMETER));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> UnitTransformer.transform(TRANSFORM_VALUE, TEBIBYTE, KILOMETER));
     }
 
 
@@ -35,8 +45,36 @@ class UnitTransformerTest {
 
     @Test
     void transformLengthUnitPass() {
-        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, LengthUnit.MILE, LengthUnit.ATTOMETER);
-        Assertions.assertEquals(1.6093439983584694E23, resultValue);
+        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, MILE, ATTOMETER);
+        Assertions.assertEquals(1.6093439999999998E23, resultValue);
+    }
+
+    @Test
+    void transformMulitpleDifferentLengthUnitPass() {
+        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, GIGAMETER, LEAGUE);
+        Assertions.assertEquals(20712330.174427, resultValue);
+    }
+
+    /**
+     * MassUnit Test
+     */
+
+    @Test
+    void transformMassUnitPass() {
+        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, KILOTONNE, MILLIGRAM);
+        Assertions.assertEquals(1.000000000000018E14, resultValue);
+    }
+
+    @Test
+    void transformBritishMassUnitPass() {
+        String resultValue = UnitTransformer.transform(TRANSFORM_VALUE, ZENTNER, UNZE, "#.##");
+        Assertions.assertEquals("179200", resultValue);
+    }
+
+    @Test
+    void transformBritishMassUnitToMassUnitPass() {
+        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, ZENTNER, KILOGRAM);
+        Assertions.assertEquals(5080.234543999862, resultValue);
     }
 
 
@@ -46,25 +84,25 @@ class UnitTransformerTest {
 
     @Test
     void transformSIDataByteUnitToDataByteUnitFormattedPass() {
-        String resultValue = UnitTransformer.transform(TRANSFORM_VALUE, SIDataByteUnit.YOTTABYTE, DataByteUnit.YOBIBYTE, "#.##");
+        String resultValue = UnitTransformer.transform(TRANSFORM_VALUE, YOTTABYTE, YOBIBYTE, "#.##");
         Assertions.assertEquals("82,72", resultValue);
     }
 
     @Test
     void transformDataByteUnitToDataBinaryUnitFormattedPass() {
-        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, DataByteUnit.YOBIBYTE, DataBinaryUnit.YOBIBIT);
+        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, YOBIBYTE, YOBIBIT);
         Assertions.assertEquals(800, resultValue);
     }
 
     @Test
     void transformDataBinaryUnitToSIDataBinaryUnitFormattedPass() {
-        String resultValue = UnitTransformer.transform(TRANSFORM_VALUE, DataBinaryUnit.YOBIBIT, SIDataBinaryUnit.YOTTABIT, "#.##");
+        String resultValue = UnitTransformer.transform(TRANSFORM_VALUE, YOBIBIT, YOTTABIT, "#.##");
         Assertions.assertEquals("120,89", resultValue);
     }
 
     @Test
     void transformSIDataBinaryUnitToSIDataByteUnitFormattedPass() {
-        String resultValue = UnitTransformer.transform(TRANSFORM_VALUE, SIDataBinaryUnit.YOTTABIT, SIDataByteUnit.YOTTABYTE, "#.##");
+        String resultValue = UnitTransformer.transform(TRANSFORM_VALUE, YOTTABIT, YOTTABYTE, "#.##");
         Assertions.assertEquals("12,5", resultValue);
     }
 }
