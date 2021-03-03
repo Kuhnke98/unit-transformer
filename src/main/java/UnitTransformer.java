@@ -2,8 +2,6 @@ import units.Unitizer;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 /**
  * @author kuhnke98

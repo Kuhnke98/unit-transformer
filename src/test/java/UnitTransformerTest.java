@@ -6,6 +6,7 @@ import static units.dataUnits.DataByteUnit.TEBIBYTE;
 import static units.dataUnits.DataByteUnit.YOBIBYTE;
 import static units.dataUnits.SIDataBinaryUnit.YOTTABIT;
 import static units.dataUnits.SIDataByteUnit.YOTTABYTE;
+import static units.lengthUnits.AstronomicalLengthUnit.LIGHT_YEAR;
 import static units.lengthUnits.InternationalLengthUnit.MILE;
 import static units.lengthUnits.LengthUnit.*;
 import static units.lengthUnits.UsSurveyLengthUnit.LEAGUE;
@@ -46,13 +47,19 @@ class UnitTransformerTest {
     @Test
     void transformLengthUnitPass() {
         double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, MILE, ATTOMETER);
-        Assertions.assertEquals(1.6093439999999998E23, resultValue);
+        Assertions.assertEquals(1.609347219E23, resultValue);
     }
 
     @Test
     void transformMulitpleDifferentLengthUnitPass() {
         double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, GIGAMETER, LEAGUE);
-        Assertions.assertEquals(20712330.174427, resultValue);
+        Assertions.assertEquals(2.0712330174426716E7, resultValue);
+    }
+
+    @Test
+    void transformMileToLightYearLengthUnitPass() {
+        double resultValue = UnitTransformer.transform(TRANSFORM_VALUE, MILE, LIGHT_YEAR);
+        Assertions.assertEquals(1.7010328918718746E-11, resultValue);
     }
 
     /**

@@ -17,11 +17,11 @@ public enum LengthUnit implements Unitizer {
     NANOMETER("nm", 1000d),
     MICROMETER("µm", 1000d),
     MILLIMETER("mm", 10d),
-    CENTIMETER("cm", 2.54d),
-    INCH("z", 3.93700787d),
+    CENTIMETER("cm", 10d),
     DECIMETER("dm", 10d),
     METER("m", 1000d),
-    KILOMETER("km", 1000d),
+    KILOMETER("km", 1.609347219),
+    MILE("mi", 621.36994937697),
     MEGAMETER("Mm", 1000d),
     GIGAMETER("Gm", null);
 
