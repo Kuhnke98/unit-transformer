@@ -11,7 +11,7 @@ unit - unit of the value to be transformed<br>
 targetUnit - target unit of the transformed value<br><br>
 
 <pre>String transform(double value, Enum<?> unit, Enum<?> targetUnit, String pattern)</pre>
-same functionality as the first method, but it converts to the specified pattern
+same functionality as the first method, but it converts to the specified pattern<br>
 pattern - converts to DecimalFormat pattern (like "#.##");
 
 ## Transformation between different enum types
