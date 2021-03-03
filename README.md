@@ -1,8 +1,8 @@
-#UNIT-TRANSFORMER
+# UNIT-TRANSFORMER
 
 Unit transformer is an Java plugin to transform values between different units
 
-##Methods to call
+## Methods to call
 This plugin has the following functions:
 
 <pre>double transform(double value, Enum<?> unit, Enum<?> targetUnit)</pre>
@@ -14,7 +14,7 @@ targetUnit - target unit of the transformed value<br><br>
 same functionality as the first method, but it converts to the specified pattern
 pattern - converts to DecimalFormat pattern (like "#.##");
 
-##Transformation between different enum types
+## Transformation between different enum types
 You can transform between two different EnumUnits if the same value is defined in both enums
 
 Example: You can transform between DataBinaryUnit, DataByteUnit, SIDataBinaryUnit, SIDataByteUnit, because they all have BIT as common value.
@@ -28,7 +28,7 @@ define an enum and implement the interface Unitizer for it
 - sort your units from the lowest to the highest value
 - the multiplier from this value you edit will be multiplied/divided by the next higher unit
 
-##Transform units
+## Transform units
 In the latest version you can transform the following units
 
 - Data storage
