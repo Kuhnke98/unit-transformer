@@ -5,14 +5,15 @@ Unit transformer is an Java plugin to transform values between different units
 ## Methods to call
 This plugin has the following functions:
 
-<pre>double transform(double value, Enum<?> unit, Enum<?> targetUnit)</pre>
-return value - returns the transformed value<br>
+<pre>UnitTransformer.transform(Enum unit, Enum targetUnit)</pre>
+return value - double
 unit - unit of the value to be transformed<br>
 targetUnit - target unit of the transformed value<br><br>
 
-<pre>String transform(double value, Enum<?> unit, Enum<?> targetUnit, String pattern)</pre>
+<pre>UnitTransformer.transform(Enum unit, Enum targetUnit, String pattern)</pre>
 same functionality as the first method, but it converts to the specified pattern<br>
-pattern - converts to DecimalFormat pattern (like "#.##");
+return value - String<br>
+pattern - converts to DecimalFormat pattern (like "#.##")
 
 ## Transformation between different enum types
 You can transform between two different EnumUnits if the same value is defined in both enums
